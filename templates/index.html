@@ -128,11 +128,43 @@
 }
 
 .chat-button {
-  background-color: #0e36ae;
-  color: white;
-  padding: 10px 20px;
+  {% comment %} background-color: #0e36ae; {% endcomment %}
+  margin-top: -402px;
+  padding: 29px 41px;
   border-radius: 20px;
   cursor: pointer;
+  background-image: url(/static/user/images/chatbot.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 14px;
+  transition: right 0.3s ease-in-out;
+}
+@keyframes headShake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-10px);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(10px);
+  }
+}
+
+#chatbot-icon  {
+  animation: headShake 5s ease infinite;
 }
 
 .chat-box {
@@ -146,7 +178,7 @@
   cursor: grab;
   user-select: none; /* Prevent text selection while dragging */
   position: fixed;
-  left: 50%; /* Set initial left position */
+  left: 80%; /* Set initial left position */
   top: 50%; /* Set initial top position */
   transform: translate(-50%, -50%); /* Center the chat box */
   box-shadow: 0 2px 1px rgba(0,0,0,0.09), 0 4px 2px rgba(0,0,0,0.09), 0 8px 4px rgba(0,0,0,0.09), 0 16px 8px rgba(0,0,0,0.09), 0 32px 16px rgba(0,0,0,0.09);
@@ -241,21 +273,21 @@
 <br>   <br>
 <br>   <br>
 <br>
-<div id="carouselExampleCaptions" class="carousel slide">
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-interval="2000">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
+  <div class="carousel-inner" > <!-- Set interval to 5 seconds -->
+    <div class="carousel-item active" >
       <img src="{% static 'user/images/car1 (1).png' %}" class="d-block w-100 h-" style="height: 640px;" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>Share Ride</h5>
-        <p>Book your taxi any where ,any time.</p>
+        <p>Book your taxi any where, any time.</p>
       </div>
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item" data-bs-interval="5000">
       <img src="{% static 'user/images/aaa.png' %}" class="d-block w-100" style="height: 640px;" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>Second slide label</h5>
@@ -266,7 +298,7 @@
       <img src="{% static 'user/images/car5 (1).png' %}" class="d-block w-100" style="height: 640px;" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>Share Ride</h5>
-        <p>Save Money,Save time.</p>
+        <p>Save Money, Save time.</p>
       </div>
     </div>
   </div>
@@ -279,6 +311,7 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+
 <br>
 <div class="aw"><h1>Available Divers</h1></div>
 <br>
@@ -452,7 +485,7 @@
 
 
     <div class="chat-container">
-      <div class="chat-button" id="chatButton" onclick="toggleChat()">Questions?</div>
+      <div  id="chatbot-icon" class="chat-button" id="chatButton" onclick="toggleChat()"></div>
 
       <div class="chat-box" id="chatBox">
           <div class="chat-header">

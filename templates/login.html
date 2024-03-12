@@ -1,160 +1,170 @@
-
-{% block title %}
-
-{% endblock %}
-
-{% block content %}
-{% load static %}
+{% block title %} {% endblock %} {% block content %} {% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <style>
-        html {
-            height: 100%;
-            background-color: #f4db31;
+      html {
+        height: 100%;
+        {% comment %} background-color: #f4db31; {% endcomment %}
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        background-image: url(/static/user/images/log.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+        animation: bgMove 20s infinite alternate; /* Apply animation to the background image */
+      }
+      @keyframes bgMove {
+        0% {
+          background-position: center 0; /* Initial position */
         }
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: sans-serif;
-            background-color: #f4db31; /* Set background color */
+        50% {
+          background-position: center 100%; /* Move down */
         }
-    
-        .login-box {
-            position: absolute;
-            top: 60%;
-            left: 50%;
-            width: 400px;
-            padding: 40px;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, .9);
-            box-sizing: border-box;
-            box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
-            border-radius: 10px;
+        100% {
+          background-position: center 0; /* Back to initial position */
         }
-    
-        .login-box h2 {
-            margin: 0 0 30px;
-            padding: 0;
-            color: #fff;
-            text-align: center;
-        }
-    
-        .login-box .user-box {
-            position: relative;
-        }
-    
-        .login-box .user-box input {
-            width: 100%;
-            padding: 10px 0;
-            font-size: 16px;
-            color: #fff;
-            margin-bottom: 30px;
-            border: none;
-            border-bottom: 1px solid #fff;
-            outline: none;
-            background: transparent;
-        }
-    
-        .login-box .user-box label {
-            position: absolute;
-            top: 0;
-            left: 0;
-            padding: 10px 0;
-            font-size: 16px;
-            color: #fff;
-            pointer-events: none;
-            transition: .5s;
-        }
-    
-        .login-box .user-box input:focus ~ label,
-        .login-box .user-box input:valid ~ label {
-            top: -20px;
-            left: 0;
-            color: #03e9f4;
-            font-size: 12px;
-        }
-    
-        .login-box form button {
-            position: relative;
-            display: inline-block;
-            padding: 10px 20px;
-            color: #03e9f4;
-            font-size: 16px;
-            text-decoration: none;
-            text-transform: uppercase;
-            overflow: hidden;
-            transition: .5s;
-            margin-top: 40px;
-            letter-spacing: 4px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            background-color: #f4db31; /* Set button background color */
-        }
-    
-        .login-box button:hover {
-            background: #f4db31;
-            color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 5px white, 0 0 25px white, 0 0 50px white;
-        }
-        .login-heading {
-            text-align: center;
-            font-size: px;
-            margin-top:10px;
-            color:white;
-        }
-        .messages{
-            margin-top: 100px;
-        }
+      }
+      .login-box {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        width: 400px;
+        padding: 40px;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.9);
+        box-sizing: border-box;
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+        border-radius: 10px;
+      }
+
+      .login-box h2 {
+        margin: 0 0 30px;
+        padding: 0;
+        color: #fff;
+        text-align: center;
+      }
+
+      .login-box .user-box {
+        position: relative;
+      }
+
+      .login-box .user-box input {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 16px;
+        color: #fff;
+        margin-bottom: 30px;
+        border: none;
+        border-bottom: 1px solid #fff;
+        outline: none;
+        background: transparent;
+      }
+
+      .login-box .user-box label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 10px 0;
+        font-size: 16px;
+        color: #fff;
+        pointer-events: none;
+        transition: 0.5s;
+      }
+
+      .login-box .user-box input:focus ~ label,
+      .login-box .user-box input:valid ~ label {
+        top: -20px;
+        left: 0;
+        color: #03e9f4;
+        font-size: 12px;
+      }
+
+      .login-box form button {
+        position: relative;
+        display: inline-block;
+        padding: 10px 20px;
+        color: #03e9f4;
+        font-size: 16px;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        transition: 0.5s;
+        margin-top: 40px;
+        letter-spacing: 4px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        background-color: #f4db31; /* Set button background color */
+      }
+
+      .login-box button:hover {
+        background: #f4db31;
+        color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 5px white, 0 0 25px white, 0 0 50px white;
+      }
+      .login-heading {
+        text-align: center;
+        font-size: px;
+        margin-top: 10px;
+        color: white;
+      }
+      .messages {
+        margin-top: 100px;
+      }
     </style>
-</head>
-<body>
-
-    <div style="text-align: center; margin-bottom:20px;">
-        {% if messages %}
-    <div class="messages">
+  </head>
+  <body>
+    <div style="text-align: center; margin-bottom: 20px">
+      {% if messages %}
+      <div class="messages">
         {% for message in messages %}
-            <li style="text-align: center;">{{ message }}</li>
+        <li style="text-align: center">{{ message }}</li>
         {% endfor %}
+      </div>
+      {% endif %}
     </div>
-{% endif %}
-    </div>
-    
-    <form action="" method="post">
-        {% csrf_token %}
-        <div class="login-box">
-            <h1 class="login-heading">Welcome to Ride Share</h1>
-            <div class="user-box">
-                <input type="text" name="username" required="" autocomplete="off">
-                <label>Username</label>
-            </div>
-            <div class="user-box">
-                <input type="password" name="password" required="" autocomplete="off">
-                <label>Password</label>
-            </div>
-            <button type="submit">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Login
-            </button>
-             <h4 style="color:white;">  Do you have a account?</h4>
-            <a href="{% url 'signup' %}">
-                <button type="button">
 
-                    Register
-                </button>
-            </a>
+    <form action="" method="post">
+      {% csrf_token %}
+      <div class="login-box">
+        <h1 class="login-heading">Welcome to Ride Share</h1>
+        <div class="user-box">
+          <input type="text" name="username" required="" autocomplete="off" />
+          <label>Username</label>
         </div>
+        <div class="user-box">
+          <input
+            type="password"
+            name="password"
+            required=""
+            autocomplete="off"
+          />
+          <label>Password</label>
+        </div>
+        <button type="submit">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Login
+        </button>
+        <h4 style="color: white">Do you have a account?</h4>
+        <a href="{% url 'signup' %}">
+          <button type="button">Register</button>
+        </a>
+      </div>
     </form>
-</body>
+  </body>
 </html>
 
 {% endblock %}
