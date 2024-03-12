@@ -1,0 +1,90 @@
+{% extends "driver/driver.html" %}
+
+{% block head %}
+<head>
+    <title>Booking List</title>
+    <style>
+        table {
+            width: 80%; /* Decreased table width */
+            margin: 20px auto; /* Center the table */
+            border-collapse: collapse;
+            margin-top: 20px;
+          }
+    
+          th, td {
+            border: 1px solid #ddd;
+            padding: 10px; /* Increased padding for better spacing */
+            text-align: center; /* Align text to the center */
+          }
+    
+          th {
+            background-color: #f2f2f2;
+          }
+          td{
+            background-color: bisque;
+            color: #000000;
+            
+          }
+          .a{
+            margin-left: 650px;
+
+            
+          }
+</style>
+</head>
+{% endblock %}
+{% block content %}
+{% load static %}
+<body>
+    <br><br>
+    <h1 class="a">Booking List</h1>
+    <table border="1">
+        <tr>
+            <th>User ID</th>
+            <th>User Name</th>
+            <th>User Phone</th>
+            <th>Passenger Count</th>
+            <th>Driver ID</th>
+            <th>Driver Name</th>
+            <th>Pickup Point</th>
+            <th>Dropping Point</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>action</th>
+            <th>Chat with customer</th>
+        </tr>
+        {% for booking in bookings %}
+        <tr>
+            <td>{{ booking.user_id }}</td>
+            <td>{{ booking.user_name }}</td>
+            <td>{{ booking.user_phone }}</td>
+            <td>{{ booking.passenger_count }}</td>
+            <td>{{ booking.driver_id }}</td>
+            <td>{{ booking.driver_name }}</td>
+            <td>{{ booking.pickup_point }}</td>
+            <td>{{ booking.dropping_point }}</td>
+            <td>{{ booking.date }}</td>
+            <td>{% if booking.status %} Booked {% else %} Not Booked {% endif %}</td>
+            <!-- Inside the for loop where the booking details are displayed -->
+            <td>
+                {% if not booking.status %}
+                    <form method="post" action="{% url 'view_booking' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="booking_id" value="{{ booking.id }}">
+                        <button class="action-button" type="submit">Approve</button>
+                    </form>
+                {% endif %}
+            </td>
+            <td>
+              <a href="{% url 'driverchat' booking.user_id %}">
+                  <button class="action-button">Chat</button>
+              </a>
+          </td>
+
+        </tr>
+        {% endfor %}
+    </table>
+
+   
+</body>
+{% endblock %}

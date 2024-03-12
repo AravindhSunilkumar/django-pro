@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block head %}
+<style>
+  .profile-card {
+    border: 1px solid #dddddd2b;
+    padding: 20px;
+    margin: 20px auto; /* Set auto for left and right margins to center the card */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.833);
+    width: 800px;
+    background-color: rgba(166, 100, 8, 0.208);
+    color: #ffffff;
+  }
+
+  .profile-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+    .profile-image {
+      margin-right: 50px;
+      padding: 10px;
+      border: 1px solid #ddd; /* Add border */
+      border-radius: 10%; /* Make it a circle */
+      overflow: hidden; /* Hide overflow for perfect circle */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.833); /* Add drop shadow effect */
+    }
+  
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10%; /* Ensure the image inside the circle container is also rounded */
+    }
+  
+    .small-image {
+      max-width: 500px;
+      max-height: 500px;
+    }
+  
+    .profile-info {
+      flex-grow: 1;
+    }
+  
+    .profile-heading {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  </style>
+{% endblock %}
+{% block content %}
+{% load static %}
+<br><br><br><br><br><br>
+<div class="profile-heading">
+  
+</div>
+
+<div class="profile-card">
+    <h1 style="margin-left:350px; color: #ffffff;">Profile</h1>
+  <div class="profile-container">
+    <div class="profile-image">
+      <!-- Assuming additional_profile has a 'profileimg' field -->
+      {% if additional_profiles %}
+        {% with additional_profile=additional_profiles.0 %}
+          {% if additional_profile.profileimg %}
+            <img src="{{ additional_profile.profileimg.url }}" alt="Profile Picture" class="small-image">
+          {% else %}
+            <img src="{% static 'images/default_profile_image.png' %}" alt="Default Profile Picture" class="small-image">
+          {% endif %}
+        {% endwith %}
+      {% else %}
+        <img src="{% static 'images/default_profile_image.png' %}" alt="Default Profile Picture" class="small-image" >
+      {% endif %}
+    </div>
+    <div class="profile-info">
+      <h2>{{ profile.user.username }}</h2>
+      {% if user_profile %}
+        <!-- Add other fields from the Profile model as needed -->
+        {% if user_profile.email %}
+          <p>Email: {{ user_profile.email }}</p>
+        {% endif %}
+      {% endif %}
+      {% if additional_profiles %}
+        {% with additional_profile=additional_profiles.0 %}
+          <p>Name: {{ additional_profile.name }}</p>
+          <p>Phone Number: {{ additional_profile.phone_number }}</p>
+          {% if additional_profile.user.email %}
+            <p>Email: {{ additional_profile.user.email }}</p>
+          {% endif %}
+        {% endwith %}
+      {% endif %}
+      <!-- Add other profile information as needed -->
+      <a href="{% url 'update_profile' user_id %}" class="btn btn-warning mx-10">Update Profile</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

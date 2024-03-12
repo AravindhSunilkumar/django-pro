@@ -1,0 +1,122 @@
+{% extends "driver/driver.html" %}
+
+{% block head %}
+<style>
+   
+    .image-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 500px;
+      height: 280px;
+    }
+    
+    .image-container img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .card {
+      box-shadow: 0 4px 8px rgba(139, 139, 139, 0.1);
+      
+    }
+    
+    .card h2{
+      text-shadow: 1px 1px 2px rgba(172, 172, 172, 0.5);
+    
+    }
+    
+    .card a {
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+    .profile img {
+      border-radius: 40%;
+      border: 2px solid #fff; /* Add a border color of your choice */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
+      width: 300px;
+      height: 200px;
+    }
+    .head{
+      margin-left: 180px;
+    }
+    .profile-card {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: rgba(255, 255, 255, 0.053) !important; /* Set alpha channel to make it semi-transparent */
+    }
+  
+    
+    
+      .center-button {
+        text-align: center;
+      }
+      .img-fluid{
+        width: 300px;
+        height: 200px;
+        border-radius: 10px;
+      }
+    </style>
+
+{% endblock %}
+{% block content %}
+{% load static %}
+
+
+<br>
+
+  <div class="container mt-5 ">
+    <div class="row p-3">
+
+      <!-- User Profile Card -->
+      <div class="card mb-5 col-md-5 profile-card">
+        
+          <div class="card-header">
+            <h1 class="card-title" style="display: flex; justify-content: center; align-items: center; height: 5vh;">Profile Information</h1>
+          </div>
+        <div class="card-body">
+          {% if user_profile %}
+            <p><strong>Name:</strong> {{ user_profile.name }}</p>
+            <p><strong>Phone Number:</strong> {{ user_profile.phone_number }}</p>
+            <p><strong>Profile Picture:</strong> <img src="{{ user_profile.profileimg.url }}" alt="Profile Picture" class="img-fluid" style="width: 200px; height: 200px; border-radius: 20%;"></p>
+
+          {% else %}
+            <p>No profile found for the current user.</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class=" col-md-1"></div>
+
+      <!-- Vehicle Information Card -->
+      <div class="card mb-4 col-md-5 profile-card">
+        <div class="card-header">
+          <h1 class="card-title" style="display: flex; justify-content: center; align-items: center; height: 5vh;">Vehicle Information</h1>
+        </div>
+        <div class="card-body">
+          {% if user_profile %}
+            
+            <p><strong>Vehicle Name:</strong> {{ user_profile.vehicle_name }}</p>
+            <p><strong>Vehicle Number:</strong> {{ user_profile.vehicle_number }}</p>
+            <p><strong>Starting Point:</strong> {{ user_profile.start }}</p>
+            <p><strong>Ending Point:</strong> {{ user_profile.end }}</p>
+            <p><strong>Seat Count:</strong> {{ user_profile.seat_count }}</p>
+            <p><strong>Vehicle Image:</strong> <img src="{{ user_profile.vehicle_img.url }}" alt="Vehicle Image" class="img-fluid "></p>
+          {% else %}
+            <p>No vehicle information found for the current user.</p>
+          {% endif %}
+        </div>
+      </div> 
+    </div>
+
+    <a href="{% url 'update_driver_profile' %}" class="btn btn-primary">Update Profile</a>
+
+  <!-- Button to navigate to the delete page -->
+  <form action="{% url 'delete_driver_profile' %}" method="post" style="display: inline;">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Delete Profile</button>
+  </form>
+  </div>
+
+<br><br>
+ {% endblock %}
+

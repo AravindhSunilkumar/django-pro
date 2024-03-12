@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block head %}
+<style>
+   
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+  
+{% endblock %}
+{% block content %}
+{% load static %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<form method="POST" enctype="multipart/form-data" style="max-width: 400px; margin: auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); padding: 20px;">
+  {% csrf_token %}
+  <h2 class="text-center">Book Your Driver</h2>
+
+  <label for="user"  style="display: none;">User id:</label>
+  <input type="text" id="user" name="user_id" required value='{{request.user.id}}'  style="display: none;">
+
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="user_name" required value='{{request.user.username}}'>
+
+  <label for="uphone_number">Phone Number:</label>
+  <input type="number" id="uphone_number" name="uphone_number" required>
+
+  <label for="passenger_count">Passenger Count: <span>Available seat count {{book.seat_count}}</span></label>
+<input type="number" id="passenger_count" name="passenger_count" min="1" required>
+
+  <label for="driver">Driver:</label>
+    <input type="text" id="driver" name="driver_name" min="1" required value='{{book.name}}' readonly>
+
+    <label for="driver_id"  style="display: none;">Driver ID:</label>
+    <input type="text" id="driver_id" name="driver" value='{{book.user.id}}' style="display: none;">
+
+    <label for="driver_number">Driver Phone NO:</label>
+    <input type="number" id="driver_number" name="driver_number" value='{{book.phone_number}}' readonly>
+
+
+  <label for="pickup_point">Pickup Point:</label>
+  <input type="text" id="pickup_point" name="pickup_point" required>
+
+  <label for="dropping_point">Dropping Point:</label>
+  <input type="text" id="dropping_point" name="dropping_point" required>
+
+  <label for="date">Date:</label>
+  <input type="date" id="date" name="date" required>
+
+
+  <button type="submit">Submit</button>
+</form>
+
+
+<br>
+<br>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var seatCount = parseInt("{{book.seat_count}}"); // Get the available seat count from your backend
+
+    // Set the maximum value of the input field based on the available seat count
+    document.getElementById('passenger_count').setAttribute('max', seatCount);
+
+    // Ensure that the user cannot enter a value greater than the available seat count
+    document.getElementById('passenger_count').addEventListener('input', function() {
+      if (parseInt(this.value) > seatCount) {
+        this.value = seatCount;
+      }
+    });
+  });
+</script>
+{% endblock %}

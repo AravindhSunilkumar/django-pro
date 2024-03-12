@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<br><br><br><br><br><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    button[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    button[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 20px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 9999;
+    }
+
+    .popup.active {
+        display: block;
+    }
+
+    #paymentStatus {
+        text-align: center;
+        font-weight: bold;
+        color: #4CAF50;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+
+
+<form id="paymentForm" onsubmit="return processPayment()">
+    <h2>Payment Form</h2>
+
+    <label for="cardNumber">Card Number:</label><br>
+    <input type="number" id="cardNumber" name="cardNumber" required><br><br>
+    
+    <label for="cardHolderName">Card Holder Name:</label><br>
+    <input type="text" id="cardHolderName" name="cardHolderName" required><br><br>
+    
+    <label for="cvv">CVV:</label><br>
+    <input type="number" id="cvv" name="cvv" required><br><br>
+    
+    <label for="expiration">Card Expiration:</label><br>
+    <input type="date" id="expiration" name="expiration" placeholder="MM/YYYY" required><br><br>
+    
+    <label for="amount">Amount:</label><br>
+    <input type="number" id="amount" name="amount" required><br><br>
+    
+    <button type="submit">Confirm Payment</button>
+</form>
+
+<div id="paymentStatusPopup" class="popup">
+    <div id="paymentStatus"></div>
+    <button onclick="closePopup()">Close</button>
+</div>
+
+<script>
+function processPayment() {
+    // Simulate processing payment
+    setTimeout(function() {
+        document.getElementById("paymentStatus").innerHTML = "Payment successful!";
+        document.getElementById("paymentStatusPopup").classList.add("active");
+        document.getElementById("paymentForm").reset();
+    }, 2000); // Change this value to simulate actual processing time
+    return false; // Prevent form submission
+}
+
+function closePopup() {
+    document.getElementById("paymentStatusPopup").classList.remove("active");
+}
+</script>
+
+</body>
+</html>
+
+
+{% endblock %}

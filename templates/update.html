@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <style>
+    /* Add your styles here */
+    body {
+      background-color: #f8f8f8;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .card {
+      border: 1px solid #dddddd2b;
+    padding: 20px;
+    margin: 20px auto; /* Set auto for left and right margins to center the card */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.833);
+    width: 800px;
+    background-color: rgba(166, 100, 8, 0.208);
+    color: #000000;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    h3 {
+      color: #666;
+    }
+
+    form {
+      margin-top: 20px;
+      text-align: left; /* Align form elements to the left */
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+   
+
+    
+  </style>
+{% endblock %}
+
+{% block content %}
+  <br><br><br><br><br><br>
+  <div class="card ">
+    <h2>Update Profile</h2>
+
+    <form action="" method="post" enctype="multipart/form-data" class="card-form">
+      {% csrf_token %}
+      <label for="{{ form.user.id_for_label }}"></label>
+      {{ form.user_id }}
+      <label for="{{ form.name.id_for_label }}">Name:</label>
+      {{ form.name }}
+      
+      <label for="{{ form.phone_number.id_for_label }}">Phone Number:</label>
+      {{ form.phone_number }}
+      
+      <label for="{{ form.profileimg.id_for_label }}">Profile Image:</label>
+      {{ form.profileimg }}
+      
+      <button type="submit" style="background-color: #FFC107; color: rgb(0, 0, 0); padding-left: 10px; padding-right: 10px; padding-top: 5px; padding-bottom: 5px; border-radius: 20px;">Update Profile</button>
+
+    </form>
+  </div>
+{% endblock %}

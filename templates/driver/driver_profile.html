@@ -1,0 +1,56 @@
+{% extends "driver/driver.html" %}
+
+{% block title %}
+   Profile
+{% endblock %}
+
+{% block head %}
+  <style>
+    .profile-card {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: rgba(255, 255, 255, 0.053) !important; /* Set alpha channel to make it semi-transparent */
+    }
+  
+    
+    .card{ max-width: 400px; margin: auto; 
+      border: 1px solid #ccc;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 10px; 
+      
+      }
+
+  </style>
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-5 ">
+    <div class="row p-3">
+
+      <!-- User Profile Card -->
+      <div class="card mb-5 col-md-5 profile-card" >
+        <div class="card-header">
+          <h1 class="card-title">User Profile</h1>
+        </div>
+        <div class="card-body">
+          {% if user_profile %}
+          
+            <p><strong>Name:</strong> {{ user_profile.name }}</p>
+            <p><strong>Phone Number:</strong> {{ user_profile.phone_number }}</p>
+            <p><strong>Profile Picture:<br><br></strong> <img src="{{ user_profile.profileimg.url }}" alt="Profile Picture" class="img-fluid" style="width: 350px; height: 300px; border-radius: 3%; margin: left 50px;"></p>
+
+          {% else %}
+            <p>No profile found for the current user.</p>
+          {% endif %}
+          <a href="{% url 'update_driver' %}" class="btn btn-success">Update Profile</a>
+        </div>
+        
+      </div>
+
+      
+    </div>
+
+    <div class="center-button">
+      
+    </div>
+  </div>
+{% endblock %}

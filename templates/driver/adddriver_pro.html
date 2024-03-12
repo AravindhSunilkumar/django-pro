@@ -1,0 +1,68 @@
+{% extends "driver/driver.html" %}
+
+
+{% block content %}
+{% load static %}
+<br>
+<div class="container mt-4">
+    
+  
+    <form method="POST" enctype="multipart/form-data" style="max-width: 400px; margin: auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); padding: 20px;">
+      {% csrf_token %}
+      <h2 class="mb-4 text-center">One time Create Profile</h2>
+      <div class="form-group mb-3">
+        <label for="id_name" class="form-label">Name:</label>
+        <input type="text" name="name" id="id_name" class="form-control" required>
+      </div>
+  
+      <div class="form-group mb-3">
+        <label for="id_phone_no" class="form-label">Phone Number:</label>
+        <input type="text" name="phone_no" id="id_phone_no" class="form-control" maxlength="10" required oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+    </div>
+    
+  
+      <div class="form-group mb-4">
+        <label for="id_profileimg" class="form-label">Profile Image:</label>
+        <input type="file" name="img" id="id_profileimg" class="form-control-file" accept="image/*" required>
+      </div>
+      <div class="form-group mb-3">
+        <label for="id_vehicle_name" class="form-label">Vehicle name</label>
+        <input type="text" name="vehicle_name" id="id_vehicle_name" class="form-control" required>
+      </div>
+    
+      <div class="form-group mb-3">
+        <label for="id_vehicle_number" class="form-label">Vehicle Number:</label>
+        <input type="text" name="vehicle_no" id="id_vehicle_number" class="form-control" required>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="start" class="form-label">Starting point:</label>
+      <input type="text" name="start" id="start" class="form-control" required>
+    </div>
+
+  <div class="form-group mb-3">
+    <label for="end" class="form-label">Ending point:</label>
+    <input type="text" name="end" id="end" class="form-control" required>
+  </div>
+
+  <div class="form-group mb-3">
+    <label for="seat_count" class="form-label">Seat count:</label>
+    <input type="text" name="seat_count" id="seat_count" class="form-control" required>
+  </div>
+    
+      <div class="form-group mb-4">
+        <label for="id_vehicle_img" class="form-label">Vehicle Image:</label>
+        <input type="file" name="vehicle_img" id="id_vehicle_img" class="form-control-file" accept="image/*" required>
+      </div>
+      {% comment %} <div class="alert alert-warning" role="alert">
+       If you create this booking profile you can't update this profile..Only admin can update your booking profile.
+      </div> {% endcomment %}
+      <button type="submit" class="btn btn-primary">Submit</button> 
+      
+    </form>
+  </div>
+
+
+  
+<br><br><br>
+ {% endblock %}

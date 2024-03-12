@@ -1,0 +1,77 @@
+{% extends "driver/driver.html" %}
+
+{% block title %}
+   Update Profile
+{% endblock %}
+
+{% block head %}
+  <style>
+    /* Add your styles here */
+    body {
+      background-color: #f8f8f8;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .card {
+      max-width: 400px;
+      margin: 100px auto; /* Adjust the margin for vertical centering */
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: #ffffff1e;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add drop shadow */
+      text-align: center; /* Center the content */
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    h3 {
+      color: #666;
+    }
+
+    form {
+      margin-top: 20px;
+      text-align: left; /* Align form elements to the left */
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+   
+
+  </style>
+{% endblock %}
+
+{% block content %}
+  <div class="container update-profile-container">
+    <div class="row card update-profile-card">
+
+      <!-- Update Profile Form -->
+      <div class="card-header">
+        <h1 class="card-title">Update Profile</h1>
+      </div>
+      <div class="card-body">
+
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="btn btn-primary">Update Profile</button>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

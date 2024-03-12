@@ -1,0 +1,151 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        html {
+            height: 100%;
+            background-color: #f4db31;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background-color: #f4db31; /* Set background color */
+        }
+
+        .signup-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            padding: 40px;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, .9);
+            box-sizing: border-box;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+            border-radius: 10px;
+        }
+
+        .signup-box h2 {
+            margin: 0 0 30px;
+            padding: 0;
+            color: #fff;
+            text-align: center;
+        }
+
+        .signup-box .user-box {
+            position: relative;
+        }
+
+        .signup-box .user-box input {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #fff;
+            margin-bottom: 30px;
+            border: none;
+            border-bottom: 1px solid #fff;
+            outline: none;
+            background: transparent;
+        }
+        .signup-box .user-box label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #fff;
+            pointer-events: none;
+            transition: .5s;
+        }
+
+        .signup-box .user-box input:focus ~ label,
+        .signup-box .user-box input:valid ~ label {
+            top: -20px;
+            left: 0;
+            color: #03e9f4;
+            font-size: 12px;
+        }
+
+        .signup-box form button {
+            position: relative;
+            display: inline-block;
+            padding: 10px 20px;
+            color: #03e9f4;
+            font-size: 16px;
+            text-decoration: none;
+            text-transform: uppercase;
+            overflow: hidden;
+            transition: .5s;
+            margin-top: 40px;
+            letter-spacing: 4px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .signup-box button:hover {
+            background: #f4db31;
+            color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px white, 0 0 25px white, 0 0 50px white;
+        }
+        .login-heading {
+            text-align: center;
+            color:white;
+            font-size: px;
+            margin-top:10px;
+        }
+
+       
+    </style>
+</head>
+<body>
+    <form action"" method="post">
+         {% csrf_token %}
+    <div class="signup-box">
+        <h1 class="login-heading">Welcome to Ride Share</h1>
+            <div class="user-box">
+                <input type="text" name="first_name" required="">
+                <label>name</label>
+            </div>
+            <div class="user-box">
+                <input type="text" name="username" required="">
+                <label>Username</label>
+            </div>
+            <div class="user-box">
+                <input type="email" name="email" required="">
+                <label>Email</label>
+            </div>
+            <div class="user-box">
+                <input type="password" name="password" required="">
+                <label>Password</label>
+            </div>
+            <div class="user-box">
+                <input type="password" name="password2" required="">
+                <label>Confirm Password</label>
+            </div>
+            <button type="submit">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Sign Up
+            </button>
+            <a href="{% url 'dlogin' %}">
+                <button type="button">
+                    Login
+                </button>
+    </div>
+    </form>
+</body>
+</html>
+
+
+
+

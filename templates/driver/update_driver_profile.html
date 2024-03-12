@@ -1,0 +1,76 @@
+{% extends "driver/driver.html" %}
+{% block content %}
+  <style>
+    /* Style for form labels */
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    /* Style for form inputs */
+    input[type="text"], input[type="file"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    /* Style for submit button */
+    button[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* Style for submit button on hover */
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+  <br><br>
+  <div class="container">
+    <div class="card " style="padding: 30px; width:600px; margin:auto;">
+        <h2 style="text-align: center;">Update Driver Profile</h2>
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" value="{{ user_profile.name }}" required>
+      
+          <label for="phone_no">Phone Number:</label>
+          <input type="text" id="phone_no" name="phone_no" value="{{ user_profile.phone_number }}" required>
+      
+          <label for="vehicle_name">Vehicle Name:</label>
+          <input type="text" id="vehicle_name" name="vehicle_name" value="{{ user_profile.vehicle_name }}" required>
+      
+          <label for="vehicle_no">Vehicle Number:</label>
+          <input type="text" id="vehicle_no" name="vehicle_no" value="{{ user_profile.vehicle_number }}" required>
+      
+          <label for="start">Starting Point:</label>
+          <input type="text" id="start" name="start" value="{{ user_profile.start }}" required>
+      
+          <label for="end">Ending Point:</label>
+          <input type="text" id="end" name="end" value="{{ user_profile.end }}" required>
+      
+          <label for="seat_count">Seat Count:</label>
+          <input type="text" id="seat_count" name="seat_count" value="{{ user_profile.seat_count }}" required>
+      
+          <label for="img">Profile Image:</label>
+          <input type="file" id="img" name="img">
+      
+          <label for="vehicle_img">Vehicle Image:</label>
+          <input type="file" id="vehicle_img" name="vehicle_img">
+      
+          <button type="submit">Update Profile</button>
+        </form>
+
+    </div>
+</div>
+<br><br><br>
+
+ 
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+
+{% block head %}
+  <head>
+    <title >Chat with {{ driver.username }}</title>
+    <style>
+        .message {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .sent {
+            background-color: #f0f0f0;
+            margin-left: 100px;
+        }
+        
+        .received {
+            background-color: #e5f7ff;
+            margin-right: 100px;
+        }
+        .ca{
+          background-color: #e5f7ff;
+          width: 800px;
+          margin: auto;
+          padding: 25px;
+        }
+        
+    </style>
+  </head>
+{% endblock %}
+
+{% block content %}
+<br> <br> <br> <br>
+<br> <br> <br> <br>
+ <div class="card ca">
+  <div class="container">
+    <h1 style="text-align: center;">Chat with {{ driver.username }}</h1>
+    <div id="chat-container">
+      {% for chat in chats %}
+        {% if chat.sender == user %}
+          <div class="message sent">
+            <strong>{{ chat.sender.username }}</strong>: {{ chat.message }}
+          </div>
+        {% else %}
+          <div class="message received">
+            <strong>{{ chat.sender.username }}</strong>: {{ chat.message }}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <form method="post" style="margin-top: 20px; text-align: center;">
+      {% csrf_token %}
+      <input type="text" name="message" placeholder="Type a message..." style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+      <button type="submit" style="padding: 10px 20px; border-radius: 5px; background-color: #007bff; color: #fff; border: none;">Send</button>
+    </form>
+    
+   </div>
+   <br>
+   <button style="width: 150px; margin:auto;" class="btn btn-warning"><a  style="color: #000000;" href="{% url 'payment' %}">Make Payment</a></button>
+
+ </div>
+
+{% endblock %}
