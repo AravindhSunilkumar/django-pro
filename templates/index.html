@@ -128,7 +128,7 @@
 }
 
 .chat-button {
-  {% comment %} background-color: #0e36ae; {% endcomment %}
+  /* background-color: #0e36ae;  */
   margin-top: -402px;
   padding: 29px 41px;
   border-radius: 20px;
@@ -234,7 +234,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-lg-3">
-                    <div class="logo"><a href="index.html"><img src="{% static 'user/images/logo - Copy.png' %}"><h1 style= color:white;>Ride share</h1></a></div>
+                    <div class="logo"><a href="index.html"><h1 style= "color:white;width:max-content;"><img style="width:70px;margin-top: -17px;height: 59px;" src="{% static 'user/images/taxi-logo.png' %}">Share Ride</h1></a></div>
                 </div>
                 <div class="col-sm-6 col-lg-9">
                     <div class="menu_text">
@@ -248,8 +248,16 @@
                                   <a href="{% url 'user_profile' %}">Add Profile</a> <!-- Add any additional profile-related links here -->
                               </div>
                           </li>
+                          <li><a href="#taxis">About Us</a></li>
+                          <li class="dropdown">
+                            <a href="#" class="dropbtn"><img style="max-width:40px;" src="{% static 'user/images/handshake.png' %}" alt=""></a>
+                            <div class="dropdown-content">
+                                <!-- <a href="{% url 'profile' %}">View Profile</a> -->
+                                <a href="{% url 'logoutpage' %}">Logout</a> <!-- Add any additional profile-related links here -->
+                            </div>
+                        </li>
                             {% comment %} <li><a href="{% url 'profile' %}">Profile</a></li> {% endcomment %}
-                            <li><a href="{% url 'logoutpage' %}">Logout</a></li>
+                            <!-- <li><a href="{% url 'logoutpage' %}">Logout</a></li> -->
                             {% comment %} <li><a href="#"><img src="{% static 'user/images/search-icon.png' %}"></a></li> {% endcomment %}
                             <div id="myNav" class="overlay">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -269,23 +277,21 @@
         </div>
     </div>
     <!-- header section end -->
-    <br>
-<br>   <br>
-<br>   <br>
-<br>
-<div id="carouselExampleCaptions" class="carousel slide" data-bs-interval="2000">
+   
+<br><br><br><br><br><br>
+ <!-- <div id="carouselExampleCaptions" style="top:-55px;" class="carousel slide" data-bs-interval="2000">
   <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" style="transition: opacity .5s ease;" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" style="transition: opacity .5s ease;" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" style="transition: opacity .5s ease;" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
-  <div class="carousel-inner" > <!-- Set interval to 5 seconds -->
+  <div class="carousel-inner" style="margin-top:-55x;" >  
     <div class="carousel-item active" >
       <img src="{% static 'user/images/car1 (1).png' %}" class="d-block w-100 h-" style="height: 640px;" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>Share Ride</h5>
         <p>Book your taxi any where, any time.</p>
-      </div>
+      </div>F
     </div>
     <div class="carousel-item" data-bs-interval="5000">
       <img src="{% static 'user/images/aaa.png' %}" class="d-block w-100" style="height: 640px;" alt="...">
@@ -298,6 +304,54 @@
       <img src="{% static 'user/images/car5 (1).png' %}" class="d-block w-100" style="height: 640px;" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>Share Ride</h5>
+        <p>Save Money, Save time.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>  -->
+
+<div id="carouselExampleCaptions" style="top:-55px;" class="carousel slide" data-bs-ride="carousel" data-bs-interval="15000">
+  <div class="carousel-indicators">
+    <button type="button" style="transition: opacity .5s ease;" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" style="transition: opacity .5s ease;" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" style="transition: opacity .5s ease;" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner" style="margin-top:-55px;">
+    <div class="carousel-item active">
+      <video class="d-block w-100" style="height: 640px;object-fit:cover; transition: opacity 0.3s;" autoplay loop>
+        <source src="{% static 'user/images/v1.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="carousel-caption d-none d-md-block text-uppercase ">
+        <h5 class="st">Share Ride</h5>
+        <p>Book your Drive anywhere, anytime.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <video class="d-block w-100" style="height: 640px;object-fit:cover; transition: opacity 0.3s;" autoplay loop>
+        <source src="{% static 'user/images/v2.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="carousel-caption d-none d-md-block text-uppercase ">
+        <h5 class="st">book your ride</h5>
+        <p>Safe and Secure Ride.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <video class="d-block w-100" style="height: 640px;object-fit:cover; transition: opacity 1s;" autoplay loop>
+        <source src="{% static 'user/images/v1.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="carousel-caption d-none d-md-block text-uppercase">
+        <h5 class="st">Share Ride</h5>
         <p>Save Money, Save time.</p>
       </div>
     </div>

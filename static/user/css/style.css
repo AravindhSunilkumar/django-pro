@@ -35,7 +35,7 @@ html {
 body {
      color: #666666;
      font-size: 14px;
-     font-family:Times New Rom...;
+     font-family:Times;
      line-height: 1.80857;
      font-weight: normal;
      overflow-x: hidden;
@@ -214,7 +214,7 @@ button {
 .header_section {
     width: 100%;
     float: left;
-    background-color: #1a1a1a;
+    background-color: #000;
     height: auto;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -226,6 +226,7 @@ button {
     width: 100%;
     float: left;
     text-align: center;
+    margin-left:-81px;
 }
 
 .menu_text {
@@ -240,7 +241,7 @@ button {
 
 .menu_text li {
     float: left;
-    padding-right: 75px;
+    padding-right: 35px;
     font-size: 18px;
     color: #ffffff;
     padding-top: 12px;
@@ -366,7 +367,7 @@ button {
     border-top: 0px;
     border-left: 0px;
     border-right: 0px;
-    color: #000;!important;
+    color: #000 !important;
     width: 95%;
     height: 30px;
     font-size: 20px;
@@ -463,9 +464,12 @@ input.email-bt::placeholder {
 }
 
 .images_2{
-     width: 100%;
-     float: left;
-     text-align: center;
+    width: 50%;
+    margin: 0px 22% 0px;
+    display: flex;
+    float: left;
+    justify-content: center;
+    text-align: center;
 }
 
 .ride_section{
@@ -700,7 +704,7 @@ input.email-bt::placeholder {
     position: absolute;
     left: 50px;
     top: 40%;
-    background-color: #f8ca12;}
+    background-color: #f8ca12;
 }
 
 #main_slider .carousel-control-prev, #main_slider .carousel-control-next {
@@ -739,3 +743,10 @@ input.email-bt::placeholder {
     color: #fff;
 }
 
+/* custom design  */
+
+.st{
+    font-size: 56px;
+    font-family: ui-serif;
+}
+/* custom design end  */
