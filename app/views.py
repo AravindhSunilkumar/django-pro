@@ -364,3 +364,27 @@ def driverchat(request, user_id):
 def payment(request):
     return render(request, 'payment.html')
 
+from django.db.models import Q
+
+def search(request):
+    owners = vehicle_owner.objects.all()
+
+    if request.method == 'GET':
+        start_location = request.GET.get('location1',None)
+        end_location = request.GET.get('location2',None)
+        
+        if start_location:
+            owners = owners.filter(start__icontains=start_location)
+        if end_location:
+            owners = owners.filter(end__icontains=end_location)
+
+    context = {
+        'owners': owners
+    }
+    return render(request, 'search.html', context)
+
+
+
+
+    
+

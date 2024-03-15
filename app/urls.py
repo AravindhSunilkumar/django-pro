@@ -34,6 +34,8 @@ urlpatterns = [
     
     path('update-driver-profile/', views.update_driver_profile, name='update_driver_profile'),
     path('delete-driver-profile/', views.delete_driver_profile, name='delete_driver_profile'),
+    path('searching/', views.search, name='search'),
+    
 
     
 

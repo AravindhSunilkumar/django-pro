@@ -256,10 +256,13 @@
                                 <a href="{% url 'logoutpage' %}">Logout</a> <!-- Add any additional profile-related links here -->
                             </div>
                         </li>
+                        <li><a href="{% url 'search' %}" id="swapLink"><img src="{% static 'user/images/search-icon.png' %}" class="toggle_menu"></a></li>
+                        
                             {% comment %} <li><a href="{% url 'profile' %}">Profile</a></li> {% endcomment %}
                             <!-- <li><a href="{% url 'logoutpage' %}">Logout</a></li> -->
                             {% comment %} <li><a href="#"><img src="{% static 'user/images/search-icon.png' %}"></a></li> {% endcomment %}
                             <div id="myNav" class="overlay">
+                              
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <div class="overlay-content">
                   <a href="{% url 'home' %}">Home</a>
@@ -268,7 +271,8 @@
                   <a href="{% url 'logoutpage' %}">Logout</a>
                 </div>
                 </div>
-                <span  style="font-size:33px;cursor:pointer; color: #ffffff;" onclick="openNav()"><img src="{% static 'user/images/search-icon.png' %}" class="toggle_menu"></span>
+               
+                <!-- <span  style="font-size:33px;cursor:pointer; color: #ffffff;" onclick="openNav()"><img src="{% static 'user/images/search-icon.png' %}" class="toggle_menu"></span> -->
                 </div>  
                 </li>
                         </ul>
