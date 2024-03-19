@@ -4,41 +4,56 @@
 <head>
     <title>Booking List</title>
     <style>
+      
         table {
-            width: 80%; /* Decreased table width */
-            margin: 20px auto; /* Center the table */
-            border-collapse: collapse;
+            width: 80%; 
+            margin: 20px auto; 
+            border-collapse:collapse;
             margin-top: 20px;
+            border: none;
+            border-radius: 5cap;
           }
     
           th, td {
             border: 1px solid #ddd;
             padding: 10px; /* Increased padding for better spacing */
             text-align: center; /* Align text to the center */
+            background:rgba(0, 0, 0, 0.9);
           }
     
           th {
-            background-color: #f2f2f2;
+            background:rgba(0, 0, 0, 0.9);
+            color: #fff;
+            box-shadow: #ddd;
+            border: none;
           }
           td{
-            background-color: bisque;
-            color: #000000;
-            
+            background:rgba(0, 0, 0, 0.9);
+            color: #fff;
+            border: none;
           }
           .a{
-            margin-left: 650px;
+           display:flex;
+           justify-content: center;
+           align-items: center;
+           color: #fff;
 
             
+          }
+          .action-b:hover{
+            background-color: orange;
+            color: black;
+
           }
 </style>
 </head>
 {% endblock %}
 {% block content %}
 {% load static %}
-<body>
+<body style="background-color: #f2f2f2; ">
     <br><br>
     <h1 class="a">Booking List</h1>
-    <table border="1">
+    <table border="1" >
         <tr>
             <th>User ID</th>
             <th>User Name</th>
@@ -71,13 +86,13 @@
                     <form method="post" action="{% url 'view_booking' %}">
                         {% csrf_token %}
                         <input type="hidden" name="booking_id" value="{{ booking.id }}">
-                        <button class="action-button" type="submit">Approve</button>
+                        <button class="action-b btn btn-success" type="submit">Approve</button>
                     </form>
                 {% endif %}
             </td>
             <td>
               <a href="{% url 'driverchat' booking.user_id %}">
-                  <button class="action-button">Chat</button>
+                  <button class="action-b btn btn-success">Chat</button>
               </a>
           </td>
 

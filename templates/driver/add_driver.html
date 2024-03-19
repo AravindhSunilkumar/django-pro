@@ -4,10 +4,10 @@
 {% block content %}
 {% load static %}
 <br>
-<div class="container mt-4">
+<div class="container mt-4" style="max-width:415px;background:rgba(0, 0, 0, 0.9);">
     
   
-    <form method="POST" enctype="multipart/form-data" style="max-width: 400px; margin: auto; border: 1px solid #ccc; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); padding: 20px;">
+    <form method="POST" enctype="multipart/form-data" style="max-width: 400px; margin: auto; color:#fff;box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); padding: 20px;">
       {% csrf_token %}
       <h2 class="mb-4 text-center">Create Profile</h2>
       <div class="form-group mb-3">

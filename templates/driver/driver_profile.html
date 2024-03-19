@@ -9,11 +9,16 @@
     .profile-card {
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       background-color: rgba(255, 255, 255, 0.053) !important; /* Set alpha channel to make it semi-transparent */
+      min-width:400px !important;
+      color:white;
     }
   
     
-    .card{ max-width: 400px; margin: auto; 
-      border: 1px solid #ccc;
+    .card{ 
+      max-width: 400px;
+      margin: auto; 
+    
+      background:transparent !important;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       padding: 10px; 
       
@@ -23,13 +28,13 @@
 {% endblock %}
 
 {% block content %}
-  <div class="container mt-5 ">
+  <div class="container mt-5 "style="background: rgba(0, 0, 0, 0.9);width: 35%;" >
     <div class="row p-3">
 
       <!-- User Profile Card -->
       <div class="card mb-5 col-md-5 profile-card" >
         <div class="card-header">
-          <h1 class="card-title">User Profile</h1>
+          <h1 class="card-title text-center text-uppercase">User Profile</h1>
         </div>
         <div class="card-body">
           {% if user_profile %}
@@ -41,7 +46,9 @@
           {% else %}
             <p>No profile found for the current user.</p>
           {% endif %}
-          <a href="{% url 'update_driver' %}" class="btn btn-success">Update Profile</a>
+          <div class="text-center">
+            <a href="{% url 'update_driver' %}" class="btn btn-success text-center">Update Profile</a>
+          </div>
         </div>
         
       </div>
